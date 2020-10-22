@@ -1,0 +1,1 @@
+`className` is the way that JavaScript let us write `class` for a DOM element. We need to do so because the keywork `class` is reserved in JavaScript and is used to create classes that describe objects.
