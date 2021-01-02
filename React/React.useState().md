@@ -13,7 +13,7 @@ State can be defined as: data that changes over time.
 Each time the state of a component gets changed React will render the component to update the UI with the new information.
 
 ## Performance tip
-The `useState` Hook will get called each time a component render (and re-renders) and if we use some complex functions or if we have to rely on API to calculate the initial value of our state this function this could be a problem because the function that we use **get's called each time**.
+The `useState` Hook will get called each time a component render (and re-renders) and if we use some complex functions or if we have to rely on API to calculate the initial value of our state this could be a problem because the function that we use **get's called each time**.
 
 To avoid this instead of passing the function call that calculates the initial value for the state we can pass it within a function to let React call it only the first time a component gets rendered.
 
