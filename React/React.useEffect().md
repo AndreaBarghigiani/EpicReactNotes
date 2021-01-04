@@ -1,4 +1,6 @@
-`React.useEffect()` is the Hook way that let us run some code when some state/values/props has changed. At first, when Hooks have been introduced, this looked like the answer to the [[lifecycle methods]] that we were used to use in a React class component. 
+`React.useEffect()` is the Hook way that let us run some code when some state/values/props have changed. At first, when Hooks have been introduced, this looked like the answer to the [[lifecycle methods]] that we were used to use in a React class component. 
+
+> This is very similar to [[React.useLayoutEffect()|useLayoutEffect]] with the main difference that when we use the `useEffect` Hook it gets run **after** the component renders and ensures that your effect callback does not block browser painting.
 
 Anyway as we will dig deeper in this note `React.useEffect()` has many benefits that go over the standard lifecycle methods.
 Basic syntax:
@@ -21,9 +23,8 @@ function useAsync( asyncCallback, initialState ){
 	const [state, dispatch] = // state definition
 
 	React.useEffect(() => {
-    const promise = asyncCallback(); // <- this is a dependency
-    // Other code not important
-	 
+    	const promise = asyncCallback(); // <- this is a dependency
+    	// Other code not important 
 	}, 
   	[asyncCallback]); // <- WRONG!!!
 	
@@ -43,7 +44,7 @@ function PokemonInfo({pokemonName}) {
   )
 
 ```
-As you can see the `asyncCallback` is defined **inside the component** and from the React eyes it'll be a new function at each render and this is not a good solution since will let us wasting resources.
+As you can see the `asyncCallback` is defined **inside the component** and from the React point of view it'll be a new function at each render and this is not a good solution since will let us wasting resources.
 
 In order to solve this issue we have to identify **what really changes** and pass it as a parameter to insert it in the dependencies list.
 
